@@ -31,7 +31,24 @@ export type Rectangle = struct {
 	width: f32, height: f32,
 };
 
+export type Camera2D = struct {
+	_offset: Vector2,
+	target: Vector2,
+	rotation: f32,
+	zoom: f32,
+};
 
+export type Camera3D = struct {
+	position: Vector3,
+	target: Vector3,
+	up: Vector3,
+	fovy: f32,
+	projection: Projection,
+};
+
+export type Projection = int;
+export def CAMERA_PROJECTION   = 0 : Projection;
+export def CAMERA_ORTHOGRAPHIC = 1 : Projection;
 // minimal for displaying a window
 export @symbol("InitWindow")
 fn init_window(int, int, *c::char) nullable *opaque;
@@ -83,3 +100,17 @@ fn get_mouse_y() int;
 
 export @symbol("IsMouseButtonPressed")
 fn is_mouse_button_pressed(button: int) bool;
+
+
+// Cameras
+export @symbol("BeginMode2D")
+fn begin_mode2D(Camera2D) void;
+
+export @symbol("EndMode2D")
+fn end_mode2D() void;
+
+export @symbol("BeginMode3D")
+fn begin_mode3D(Camera3D) void;
+
+export @symbol("EndMode3D")
+fn end_mode3D() void;
