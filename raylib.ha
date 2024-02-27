@@ -42,14 +42,6 @@ fn close_window() void;
 export @symbol("WindowShouldClose")
 fn window_should_close() bool;
 
-export @symbol("BeginDrawing")
-fn begin_drawing() void;
-
-export @symbol("EndDrawing")
-fn end_drawing() void;
-
-export @symbol("ClearBackground")
-fn clear_background(Color) void;
 
 // misc
 export @symbol("SetTargetFPS")
@@ -62,30 +54,16 @@ export @symbol("GetTime")
 fn get_time() f64;
 
 // Minimal for drawing stuff
-export @symbol("DrawPixel")
-fn draw_pixel(int, int, Color) void;
-
-export @symbol("DrawLine")
-fn draw_line(int, int, int, int, Color) void;
-
-export @symbol("DrawLineEx")
-fn draw_line_ex(int, int, int, int, f32, Color) void;
-
-export @symbol("DrawCircle")
-fn draw_circle(int, int, f32, Color) void;
-
-export @symbol("DrawEllipse")
-fn draw_ellipse(int, int, f32, f32, Color) void;
-
-export @symbol("DrawRectangle")
-fn draw_rectangle(int, int, int, int, Color) void;
-
-export @symbol("DrawRectangleLines")
-fn draw_rectangle_lines(int, int, int, int, Color) void;
 
 // Text
 export @symbol("DrawFPS")
 fn draw_fps(int, int) void;
+
+export @symbol("DrawText") 
+fn draw_text(text: *c::char, x: int, y: int, fsize: int, col: Color) void;
+
+export @symbol("MeasureText")
+fn measure_text(text: *c::char, fsize: int) int;
 
 // Basic Input
 export @symbol("IsKeyPressed")
@@ -97,7 +75,11 @@ fn is_key_down(int) bool;
 export @symbol("IsKeyReleased")
 fn is_key_released(int) bool;
 
+export @symbol("GetMouseX")
+fn get_mouse_x() int;
 
-// texturing
-export @symbol("BeginTextureMode")
-fn begin_texture_mode(RenderTexture2D) void;
+export @symbol("GetMouseY")
+fn get_mouse_y() int;
+
+export @symbol("IsMouseButtonPressed")
+fn is_mouse_button_pressed(button: int) bool;

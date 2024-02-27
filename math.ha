@@ -112,7 +112,7 @@ export @symbol("Vector2ClampValue")
 fn vector2_clamp_value(v: Vector2, min: f32, max: f32) Vector2;
 
 export @symbol("Vector2Equals")
-fn vector2_equals(p: Vector2, q: Vector2) int;    
+fn vector2_equals(p: Vector2, q: Vector2) bool;
 
 export @symbol("Vector3Zero")
 fn vector3_zero() Vector3;
@@ -187,7 +187,7 @@ export @symbol("Vector3ClampValue")
 fn vector3_clamp_value(v: Vector3, min: f32, max: f32) Vector3;
 
 export @symbol("Vector3Equals")
-fn vector3_equals(p: Vector3, q: Vector3) int;    
+fn vector3_equals(p: Vector3, q: Vector3) bool;
 
 export @symbol("Vector4Zero")
 fn vector4_zero() Vector4;
@@ -262,4 +262,4 @@ export @symbol("Vector4ClampValue")
 fn vector4_clamp_value(v: Vector4, min: f32, max: f32) Vector4;
 
 export @symbol("Vector4Equals")
-fn vector4_equals(p: Vector4, q: Vector4) int;    
+fn vector4_equals(p: Vector4, q: Vector4) bool;
