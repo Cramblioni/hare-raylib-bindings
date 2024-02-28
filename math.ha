@@ -39,6 +39,8 @@ fn wrap(value: f32, min: f32, max: f32) f32;
 export @symbol("FloatEquals")
 fn float_equals(x: f32, y: f32) bool;
 
+// VECTOR 2
+
 export @symbol("Vector2Zero")
 fn vector2_zero() Vector2;
 
@@ -114,6 +116,7 @@ fn vector2_clamp_value(v: Vector2, min: f32, max: f32) Vector2;
 export @symbol("Vector2Equals")
 fn vector2_equals(p: Vector2, q: Vector2) bool;
 
+// VECTOR 3
 export @symbol("Vector3Zero")
 fn vector3_zero() Vector3;
 
@@ -121,61 +124,88 @@ export @symbol("Vector3One")
 fn vector3_one() Vector3;
 
 export @symbol("Vector3Add")
-fn vector3_add(x: Vector3, y: Vector3) Vector3;
+fn vector3_add(v1: Vector3, v2: Vector3) Vector3;
 
 export @symbol("Vector3AddValue")
-fn vector3_add_value(x: Vector3, y: f32) Vector3;
+fn vector3_add_value(v: Vector3, add: f32) Vector3;
 
 export @symbol("Vector3Subtract")
-fn vector3_subtract(x: Vector3, y: Vector3) Vector3;
+fn vector3_subtract(v1: Vector3, v2: Vector3) Vector3;
 
 export @symbol("Vector3SubtractValue")
-fn vector3_subtract_value(x: Vector3, y: f32) Vector3;
+fn vector3_subtract_value(v: Vector3, sub: f32) Vector3;
+
+export @symbol("Vector3Scale")
+fn vector3_scale(v: Vector3, scalar: f32) Vector3;
+
+export @symbol("Vector3Multiply")
+fn vector3_multiply(v1: Vector3, v2: Vector3) Vector3;
+
+export @symbol("Vector3CrossProduct")
+fn vector3_cross_product(v1: Vector3, v2: Vector3) Vector3;
+
+export @symbol("Vector3Perpendicular")
+fn vector3_perpendicular(v: Vector3) Vector3;
 
 export @symbol("Vector3Length")
-fn vector3_length(Vector3) f32;
+fn vector3_length(v: const Vector3) f32;
 
 export @symbol("Vector3LengthSqr")
-fn vector3_length_sqr(Vector3) f32;
-
+fn vector3_length_sqr(v: const Vector3) f32;
+ 
 export @symbol("Vector3DotProduct")
-fn vector3_dotproduct(v1: Vector3, v2: Vector3) f32;
+fn vector3_dot_product(v1: Vector3, v2: Vector3) f32;
 
 export @symbol("Vector3Distance")
 fn vector3_distance(v1: Vector3, v2: Vector3) f32;
 
+export @symbol("Vector3DistanceSqr")
+fn vector3_distance_sqr(v1: Vector3, v2: Vector3) f32;
+
 export @symbol("Vector3Angle")
 fn vector3_angle(v1: Vector3, v2: Vector3) f32;
 
-export @symbol("Vector3Scale")
-fn vector3_scale(v: Vector3, s: f32) Vector3;
-
-export @symbol("Vector3Mulitply")
-fn vector3_multiply(x: Vector3, y: Vector3) Vector3;
-
 export @symbol("Vector3Negate")
-fn vector3_negate(Vector3) Vector3;
+fn vector3_negate(v: Vector3) Vector3;
 
 export @symbol("Vector3Divide")
 fn vector3_divide(v1: Vector3, v2: Vector3) Vector3;
 
 export @symbol("Vector3Normalize")
-fn vector3_normalize(Vector3) Vector3;
+fn vector3_normalize(v: Vector3) Vector3;
+
+export @symbol("Vector3OrthoNormalize")
+fn vector3_ortho_normalize(v1: *Vector3, v2: *Vector3) void;
 
 export @symbol("Vector3Transform")
 fn vector3_transform(v: Vector3, mat: Matrix) Vector3;
 
+export @symbol("Vector3RotateByQuaternion")
+fn vector3_rotate_by_quaternion(v: Vector3, q: Quaternion) Vector3;
+
+export @symbol("Vector3RotateByAxisAngle")
+fn vector3_rotate_by_axis_angle(v: Vector3, axis: Vector3, angle: f32) Vector3;
+
 export @symbol("Vector3Lerp")
-fn vector3_lerp(v1: Vector3, v2: Vector3, value: f32) Vector3;
+fn vector3_lerp(v1: Vector3, v2: Vector3, amount: f32) Vector3;
 
 export @symbol("Vector3Reflect")
 fn vector3_reflect(v: Vector3, normal: Vector3) Vector3;
 
-export @symbol("Vector3Rotate")
-fn vector3_rotate(v: Vector3, angle: f32) Vector3;
+export @symbol("Vector3Min")
+fn vector3_min(v1: Vector3, v2: Vector3) Vector3;
 
-export @symbol("Vector3MoveTowards")
-fn vector3_move_towards(v: Vector3, target: Vector3, maxDistance: f32) Vector3;
+export @symbol("Vector3Max")
+fn vector3_max(v1: Vector3, v2: Vector3) Vector3;
+
+export @symbol("Vector3Barycenter")
+fn vector3_barycenter(p: Vector3, a: Vector3, b: Vector3, c: Vector3) Vector3;
+
+export @symbol("Vector3Unproject")
+fn vector3_unproject(source: Vector3, projection: Matrix, view: Matrix) Vector3;
+
+export @symbol("Vector3ToFloatV")
+fn vector3_to_float_v(v: Vector3) f32;
 
 export @symbol("Vector3Invert")
 fn vector3_invert(v: Vector3) Vector3;
@@ -187,79 +217,140 @@ export @symbol("Vector3ClampValue")
 fn vector3_clamp_value(v: Vector3, min: f32, max: f32) Vector3;
 
 export @symbol("Vector3Equals")
-fn vector3_equals(p: Vector3, q: Vector3) bool;
+fn vector3_equals(p: Vector3, q: Vector3) int;
 
-export @symbol("Vector4Zero")
-fn vector4_zero() Vector4;
+export @symbol("Vector3Refract")
+fn vector3_refract(v: Vector3, n: Vector3, r: f32) Vector3;
 
-export @symbol("Vector4One")
-fn vector4_one() Vector4;
+// Quaternions
+export @symbol("QuaternionAdd")
+fn quaternion_add(q1: Quaternion, q2: Quaternion) Quaternion;
 
-export @symbol("Vector4Add")
-fn vector4_add(x: Vector4, y: Vector4) Vector4;
+export @symbol("QuaternionAddValue")
+fn quaternion_add_value(q: Quaternion, add: f32) Quaternion;
 
-export @symbol("Vector4AddValue")
-fn vector4_add_value(x: Vector4, y: f32) Vector4;
+export @symbol("QuaternionSubtract")
+fn quaternion_subtract(q1: Quaternion, q2: Quaternion) Quaternion;
 
-export @symbol("Vector4Subtract")
-fn vector4_subtract(x: Vector4, y: Vector4) Vector4;
+export @symbol("QuaternionSubtractValue")
+fn quaternion_subtract_value(q: Quaternion, sub: f32) Quaternion;
 
-export @symbol("Vector4SubtractValue")
-fn vector4_subtract_value(x: Vector4, y: f32) Vector4;
+export @symbol("QuaternionIdentity")
+fn quaternion_identity() Quaternion;
 
-export @symbol("Vector4Length")
-fn vector4_length(Vector4) f32;
+export @symbol("QuaternionLength")
+fn quaternion_length(q: Quaternion) f32;
 
-export @symbol("Vector4LengthSqr")
-fn vector4_length_sqr(Vector4) f32;
+export @symbol("QuaternionNormalize")
+fn quaternion_normalize(q: Quaternion) Quaternion;
 
-export @symbol("Vector4DotProduct")
-fn vector4_dotproduct(v1: Vector4, v2: Vector4) f32;
+export @symbol("QuaternionInvert")
+fn quaternion_invert(q: Quaternion) Quaternion;
 
-export @symbol("Vector4Distance")
-fn vector4_distance(v1: Vector4, v2: Vector4) f32;
+export @symbol("QuaternionMultiply")
+fn quaternion_multiply(q1: Quaternion, q2: Quaternion) Quaternion;
 
-export @symbol("Vector4Angle")
-fn vector4_angle(v1: Vector4, v2: Vector4) f32;
+export @symbol("QuaternionScale")
+fn quaternion_scale(q: Quaternion, mul: f32) Quaternion;
 
-export @symbol("Vector4Scale")
-fn vector4_scale(v: Vector4, s: f32) Vector4;
+export @symbol("QuaternionDivide")
+fn quaternion_divide(q1: Quaternion, q2: Quaternion) Quaternion;
 
-export @symbol("Vector4Mulitply")
-fn vector4_multiply(x: Vector4, y: Vector4) Vector4;
+export @symbol("QuaternionLerp")
+fn quaternion_lerp(q1: Quaternion, q2: Quaternion, amount: f32) Quaternion;
 
-export @symbol("Vector4Negate")
-fn vector4_negate(Vector4) Vector4;
+export @symbol("QuaternionNlerp")
+fn quaternion_nlerp(q1: Quaternion, q2: Quaternion, amount: f32) Quaternion;
 
-export @symbol("Vector4Divide")
-fn vector4_divide(v1: Vector4, v2: Vector4) Vector4;
+export @symbol("QuaternionSlerp")
+fn quaternion_slerp(q1: Quaternion, q2: Quaternion, amount: f32) Quaternion;
 
-export @symbol("Vector4Normalize")
-fn vector4_normalize(Vector4) Vector4;
+export @symbol("QuaternionFromVector3ToVector3")
+fn quaternion_from_vector3_to_vector3(from: Vector3, to: Vector3) Quaternion;
 
-export @symbol("Vector4Transform")
-fn vector4_transform(v: Vector4, mat: Matrix) Vector4;
+export @symbol("QuaternionFromMatrix")
+fn quaternion_from_matrix(mat: Matrix) Quaternion;
 
-export @symbol("Vector4Lerp")
-fn vector4_lerp(v1: Vector4, v2: Vector4, value: f32) Vector4;
+export @symbol("QuaternionToMatrix")
+fn quaternion_to_matrix(q: Quaternion) Matrix;
 
-export @symbol("Vector4Reflect")
-fn vector4_reflect(v: Vector4, normal: Vector4) Vector4;
+export @symbol("QuaternionFromAxisAngle")
+fn quaternion_from_axis_angle(axis: Vector3, angle: f32) Quaternion;
 
-export @symbol("Vector4Rotate")
-fn vector4_rotate(v: Vector4, angle: f32) Vector4;
+export @symbol("QuaternionToAxisAngle")
+fn quaternion_to_axis_angle(q: Quaternion, out_Axis: *Vector3, out_Angle: *f32) void;
 
-export @symbol("Vector4MoveTowards")
-fn vector4_move_towards(v: Vector4, target: Vector4, maxDistance: f32) Vector4;
+export @symbol("QuaternionFromEuler")
+fn quaternion_from_euler(pitch: f32, yaw: f32, roll: f32) Quaternion;
 
-export @symbol("Vector4Invert")
-fn vector4_invert(v: Vector4) Vector4;
+export @symbol("QuaternionToEuler")
+fn quaternion_to_euler(q: Quaternion) Vector3;
 
-export @symbol("Vector4Clamp")
-fn vector4_clamp(v: Vector4, min: Vector4, max: Vector4) Vector4;
+export @symbol("QuaternionTransform")
+fn quaternion_transform(q: Quaternion, mat: Matrix) Quaternion;
 
-export @symbol("Vector4ClampValue")
-fn vector4_clamp_value(v: Vector4, min: f32, max: f32) Vector4;
+export @symbol("QuaternionEquals")
+fn quaternion_equals(p: Quaternion, q: Quaternion) int;
 
-export @symbol("Vector4Equals")
-fn vector4_equals(p: Vector4, q: Vector4) bool;
+// Matrixes
+
+export @symbol("MatrixDeterminant")
+fn matrix_determinant(mat: Matrix) f32;
+
+export @symbol("MatrixTrace")
+fn matrix_trace(mat: Matrix) f32;
+
+export @symbol("MatrixTranspose")
+fn matrix_transpose(mat: Matrix) Matrix;
+
+export @symbol("MatrixInvert")
+fn matrix_invert(mat: Matrix) Matrix;
+
+export @symbol("MatrixIdentity")
+fn matrix_identity() Matrix;
+
+export @symbol("MatrixAdd")
+fn matrix_add(left: Matrix, right: Matrix) Matrix;
+
+export @symbol("MatrixSubtract")
+fn matrix_subtract(left: Matrix, right: Matrix) Matrix;
+
+export @symbol("MatrixMultiply")
+fn matrix_multiply(left: Matrix, right: Matrix) Matrix;
+
+export @symbol("MatrixTranslate")
+fn matrix_translate(x: f32, y: f32, z: f32) Matrix;
+
+export @symbol("MatrixRotate")
+fn matrix_rotate(axis: Vector3, angle: f32) Matrix;
+
+export @symbol("MatrixRotateX")
+fn matrix_rotate_x(angle: f32) Matrix;
+
+export @symbol("MatrixRotateY")
+fn matrix_rotate_y(angle: f32) Matrix;
+
+export @symbol("MatrixRotateZ")
+fn matrix_rotate_z(angle: f32) Matrix;
+
+export @symbol("MatrixRotateXYZ")
+fn matrix_rotate_x_y_z(angle: Vector3) Matrix;
+
+export @symbol("MatrixRotateZYX")
+fn matrix_rotate_z_y_x(angle: Vector3) Matrix;
+
+export @symbol("MatrixScale")
+fn matrix_scale(x: f32, y: f32, z: f32) Matrix;
+
+export @symbol("MatrixFrustum")
+fn matrix_frustum(left: f64, right: f64, bottom: f64, top: f64, near: f64, far: f64) Matrix;
+
+export @symbol("MatrixPerspective")
+fn matrix_perspective(fovy: f64, aspect: f64, near: f64, far: f64) Matrix;
+
+export @symbol("MatrixOrtho")
+fn matrix_ortho(left: f64, right: f64, bottom: f64, top: f64, near: f64, far: f64) Matrix;
+
+export @symbol("MatrixLookAt")
+fn matrix_look_at(eye: Vector3, target: Vector3, up: Vector3) Matrix;
+
