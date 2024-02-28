@@ -72,16 +72,6 @@ fn get_time() f64;
 
 // Minimal for drawing stuff
 
-// Text
-export @symbol("DrawFPS")
-fn draw_fps(int, int) void;
-
-export @symbol("DrawText") 
-fn draw_text(text: *c::char, x: int, y: int, fsize: int, col: Color) void;
-
-export @symbol("MeasureText")
-fn measure_text(text: *c::char, fsize: int) int;
-
 // Basic Input
 export @symbol("IsKeyPressed")
 fn is_key_pressed(int) bool;

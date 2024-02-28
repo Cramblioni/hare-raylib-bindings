@@ -19,6 +19,9 @@ export type Matrix = struct {
 	m12: f32, m13: f32, m14: f32, m15: f32,
 };
 
+export type Radians = f32;
+export type Degrees = f32;
+
 export @symbol("Clamp")
 fn clamp(value: f32, min: f32, max: f32) f32;
 
@@ -72,7 +75,7 @@ export @symbol("Vector2Distance")
 fn vector2_distance(v1: Vector2, v2: Vector2) f32;
 
 export @symbol("Vector2Angle")
-fn vector2_angle(v1: Vector2, v2: Vector2) f32;
+fn vector2_angle(v1: Vector2, v2: Vector2) Degrees;
 
 export @symbol("Vector2Scale")
 fn vector2_scale(v: Vector2, s: f32) Vector2;
@@ -99,7 +102,7 @@ export @symbol("Vector2Reflect")
 fn vector2_reflect(v: Vector2, normal: Vector2) Vector2;
 
 export @symbol("Vector2Rotate")
-fn vector2_rotate(v: Vector2, angle: f32) Vector2;
+fn vector2_rotate(v: Vector2, angle: Degrees) Vector2;
 
 export @symbol("Vector2MoveTowards")
 fn vector2_move_towards(v: Vector2, target: Vector2, maxDistance: f32) Vector2;
@@ -163,7 +166,7 @@ export @symbol("Vector3DistanceSqr")
 fn vector3_distance_sqr(v1: Vector3, v2: Vector3) f32;
 
 export @symbol("Vector3Angle")
-fn vector3_angle(v1: Vector3, v2: Vector3) f32;
+fn vector3_angle(v1: Vector3, v2: Vector3) Degrees;
 
 export @symbol("Vector3Negate")
 fn vector3_negate(v: Vector3) Vector3;
@@ -184,7 +187,7 @@ export @symbol("Vector3RotateByQuaternion")
 fn vector3_rotate_by_quaternion(v: Vector3, q: Quaternion) Vector3;
 
 export @symbol("Vector3RotateByAxisAngle")
-fn vector3_rotate_by_axis_angle(v: Vector3, axis: Vector3, angle: f32) Vector3;
+fn vector3_rotate_by_axis_angle(v: Vector3, axis: Vector3, angle: Degrees) Vector3;
 
 export @symbol("Vector3Lerp")
 fn vector3_lerp(v1: Vector3, v2: Vector3, amount: f32) Vector3;
@@ -277,14 +280,20 @@ fn quaternion_to_matrix(q: Quaternion) Matrix;
 export @symbol("QuaternionFromAxisAngle")
 fn quaternion_from_axis_angle(axis: Vector3, angle: f32) Quaternion;
 
-export @symbol("QuaternionToAxisAngle")
-fn quaternion_to_axis_angle(q: Quaternion, out_Axis: *Vector3, out_Angle: *f32) void;
+@symbol("QuaternionToAxisAngle")
+fn QuaternionToAxisAngle(q: Quaternion, out_Axis: *Vector3, out_Angle: *f32) void;
+export fn quaternion_to_axis_angle(q: Quaternion) (Vector3, Degrees) = {
+	let axis = Vector3 { ... };
+	let angle = 0.0f32;
+	QuaternionToAxisAngle(q, &axis, &angle);
+	return (axis, angle);
+};
 
 export @symbol("QuaternionFromEuler")
-fn quaternion_from_euler(pitch: f32, yaw: f32, roll: f32) Quaternion;
+fn quaternion_from_euler(pitch: Degrees, yaw: Degrees, roll: Degrees) Quaternion;
 
 export @symbol("QuaternionToEuler")
-fn quaternion_to_euler(q: Quaternion) Vector3;
+fn quaternion_to_euler(q: Quaternion) Vector3; // Radians
 
 export @symbol("QuaternionTransform")
 fn quaternion_transform(q: Quaternion, mat: Matrix) Quaternion;
@@ -322,22 +331,22 @@ export @symbol("MatrixTranslate")
 fn matrix_translate(x: f32, y: f32, z: f32) Matrix;
 
 export @symbol("MatrixRotate")
-fn matrix_rotate(axis: Vector3, angle: f32) Matrix;
+fn matrix_rotate(axis: Vector3, angle: Radians) Matrix;
 
 export @symbol("MatrixRotateX")
-fn matrix_rotate_x(angle: f32) Matrix;
+fn matrix_rotate_x(angle: Radians) Matrix;
 
 export @symbol("MatrixRotateY")
-fn matrix_rotate_y(angle: f32) Matrix;
+fn matrix_rotate_y(angle: Radians) Matrix;
 
 export @symbol("MatrixRotateZ")
-fn matrix_rotate_z(angle: f32) Matrix;
+fn matrix_rotate_z(angle: Radians) Matrix;
 
 export @symbol("MatrixRotateXYZ")
-fn matrix_rotate_x_y_z(angle: Vector3) Matrix;
+fn matrix_rotate_xyz(angle: Vector3) Matrix; // Radians
 
 export @symbol("MatrixRotateZYX")
-fn matrix_rotate_z_y_x(angle: Vector3) Matrix;
+fn matrix_rotate_zyx(angle: Vector3) Matrix; // Radians
 
 export @symbol("MatrixScale")
 fn matrix_scale(x: f32, y: f32, z: f32) Matrix;
@@ -346,7 +355,7 @@ export @symbol("MatrixFrustum")
 fn matrix_frustum(left: f64, right: f64, bottom: f64, top: f64, near: f64, far: f64) Matrix;
 
 export @symbol("MatrixPerspective")
-fn matrix_perspective(fovy: f64, aspect: f64, near: f64, far: f64) Matrix;
+fn matrix_perspective(fovy: Radians, aspect: f64, near: f64, far: f64) Matrix;
 
 export @symbol("MatrixOrtho")
 fn matrix_ortho(left: f64, right: f64, bottom: f64, top: f64, near: f64, far: f64) Matrix;
