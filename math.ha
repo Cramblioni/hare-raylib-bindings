@@ -126,7 +126,7 @@ fn vector2_equals(p: Vector2, q: Vector2) bool;
 // VECTOR 3
 
 export fn vector3(x: f32, y: f32, z: f32) Vector3 = {
-	return Vector3 { x = x, y = y };
+	return Vector3 { x = x, y = y, z = z};
 };
 
 export @symbol("Vector3Zero")
