@@ -44,6 +44,10 @@ fn float_equals(x: f32, y: f32) bool;
 
 // VECTOR 2
 
+export fn vector2(x: f32, y: f32) Vector2 = {
+	return Vector2 { x = x, y = y };
+};
+
 export @symbol("Vector2Zero")
 fn vector2_zero() Vector2;
 
@@ -120,6 +124,11 @@ export @symbol("Vector2Equals")
 fn vector2_equals(p: Vector2, q: Vector2) bool;
 
 // VECTOR 3
+
+export fn vector3(x: f32, y: f32, z: f32) Vector3 = {
+	return Vector3 { x = x, y = y };
+};
+
 export @symbol("Vector3Zero")
 fn vector3_zero() Vector3;
 
