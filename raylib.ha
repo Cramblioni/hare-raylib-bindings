@@ -72,6 +72,16 @@ fn get_time() f64;
 
 // Minimal for drawing stuff
 
+export @symbol("ClearBackground")
+fn clear_background(color: Color) void;
+
+export @symbol("BeginDrawing")
+fn begin_drawing() void;
+
+export @symbol("EndDrawing")
+fn end_drawing() void;
+
+
 // Basic Input
 export @symbol("IsKeyPressed")
 fn is_key_pressed(int) bool;
@@ -104,3 +114,9 @@ fn begin_mode3D(Camera3D) void;
 
 export @symbol("EndMode3D")
 fn end_mode3D() void;
+
+export @symbol("BeginTextureMode")
+fn begin_texture_mode(texture: RenderTexture2D) void;
+
+export @symbol("EndTextureMode")
+fn end_texture_mode() void;

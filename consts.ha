@@ -141,3 +141,21 @@ export const KEY_BACK : int = 4;        // Key: Android back button
 export const KEY_MENU : int = 5;        // Key: Android menu button
 export const KEY_VOLUME_UP : int = 24;       // Key: Android volume up button
 export const KEY_VOLUME_DOWN : int = 25;        // Key: Android volume down button
+
+
+export def FLAG_VSYNC_HINT         : int = 0x00000040;   
+export def FLAG_FULLSCREEN_MODE    : int = 0x00000002;   
+export def FLAG_WINDOW_RESIZABLE   : int = 0x00000004;   
+export def FLAG_WINDOW_UNDECORATED : int = 0x00000008;   
+export def FLAG_WINDOW_HIDDEN      : int = 0x00000080;   
+export def FLAG_WINDOW_MINIMIZED   : int = 0x00000200;   
+export def FLAG_WINDOW_MAXIMIZED   : int = 0x00000400;   
+export def FLAG_WINDOW_UNFOCUSED   : int = 0x00000800;   
+export def FLAG_WINDOW_TOPMOST     : int = 0x00001000;   
+export def FLAG_WINDOW_ALWAYS_RUN  : int = 0x00000100;   
+export def FLAG_WINDOW_TRANSPARENT : int = 0x00000010;   
+export def FLAG_WINDOW_HIGHDPI     : int = 0x00002000;   
+export def FLAG_WINDOW_MOUSE_PASSTHROUGH : int = 0x00004000; 
+export def FLAG_BORDERLESS_WINDOWED_MODE : int = 0x00008000; 
+export def FLAG_MSAA_4X_HINT       : int = 0x00000020;   
+export def FLAG_INTERLACED_HINT    : int = 0x00010000;
