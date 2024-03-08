@@ -129,7 +129,7 @@ export @symbol("DrawSplineSegmentLinear")
 fn draw_spline_segment_linear(p1: Vector2, p2: Vector2, thick: f32, color: Color) void;
 
 export @symbol("DrawSplineSegmentBasis")
-fn Draw_Spline_Segment_Basis(p1: Vector2, p2: Vector2, p3: Vector2, p4: Vector2, thick: f32, color: Color) void;
+fn draw_spline_segment_basis(p1: Vector2, p2: Vector2, p3: Vector2, p4: Vector2, thick: f32, color: Color) void;
 
 export @symbol("DrawSplineSegmentCatmullRom")
 fn draw_spline_segment_catmull_rom(p1: Vector2, p2: Vector2, p3: Vector2, p4: Vector2, thick: f32, color: Color) void;
