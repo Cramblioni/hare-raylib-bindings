@@ -101,9 +101,6 @@ fn get_mouse_y() int;
 export @symbol("IsMouseButtonPressed")
 fn is_mouse_button_pressed(button: int) bool;
 
-export @symbol("IsMouseButtonPressed")
-fn is_mouse_button_pressed(button: int) bool;
-
 export @symbol("IsMouseButtonDown")
 fn is_mouse_button_down(button: int) bool;
 
