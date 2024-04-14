@@ -110,12 +110,6 @@ fn is_mouse_button_released(button: int) bool;
 export @symbol("IsMouseButtonUp")
 fn is_mouse_button_up(button: int) bool;
 
-export @symbol("GetMouseX")
-fn get_mouse_x() int;
-
-export @symbol("GetMouseY")
-fn get_mouse_y() int;
-
 export @symbol("GetMousePosition")
 fn get_mouse_position() Vector2;
 
