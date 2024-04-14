@@ -101,6 +101,48 @@ fn get_mouse_y() int;
 export @symbol("IsMouseButtonPressed")
 fn is_mouse_button_pressed(button: int) bool;
 
+export @symbol("IsMouseButtonPressed")
+fn is_mouse_button_pressed(button: int) bool;
+
+export @symbol("IsMouseButtonDown")
+fn is_mouse_button_down(button: int) bool;
+
+export @symbol("IsMouseButtonReleased")
+fn is_mouse_button_released(button: int) bool;
+
+export @symbol("IsMouseButtonUp")
+fn is_mouse_button_up(button: int) bool;
+
+export @symbol("GetMouseX")
+fn get_mouse_x() int;
+
+export @symbol("GetMouseY")
+fn get_mouse_y() int;
+
+export @symbol("GetMousePosition")
+fn get_mouse_position() Vector2;
+
+export @symbol("GetMouseDelta")
+fn get_mouse_delta() Vector2;
+
+export @symbol("SetMousePosition")
+fn set_mouse_position(x: int, y: int) void;
+
+export @symbol("SetMouseOffset")
+fn set_mouse_offset(offsetX: int, offsetY: int) void;
+
+export @symbol("SetMouseScale")
+fn set_mouse_scale(scaleX: f32, scaleY: f32) void;
+
+export @symbol("GetMouseWheelMove")
+fn get_mouse_wheel_move() f32;
+
+export @symbol("GetMouseWheelMoveV")
+fn get_mouse_wheel_move_v() Vector2;
+
+export @symbol("SetMouseCursor")
+fn set_mouse_cursor(cursor: int) void;
+
 
 // Cameras
 export @symbol("BeginMode2D")
